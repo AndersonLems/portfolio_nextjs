@@ -5,7 +5,7 @@ import { siteContent } from "@/data/site";
 export const metadata: Metadata = {
   title: "Contato",
   description:
-    "Formulário de contato com validação client e server para o portfólio de Anderson Lemos.",
+    "Canais de contato do portfólio técnico de Anderson Lemos.",
 };
 
 export default function ContactPage() {

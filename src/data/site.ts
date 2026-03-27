@@ -93,15 +93,15 @@ export const siteConfig = {
 };
 
 const heroSection = new HeroSectionModel({
-  eyebrow: "Desenvolvedor Full-Stack e Análista de Dados",
+  eyebrow: "Infraestrutura, redes e desenvolvimento",
   name: "Anderson Lemos",
-  role: "Infraestrutura, Redes, Análise de dados e Desenvolvimento.",
+  role: "Análise de dados e desenvolvimento full-stack",
   location: "Natal/RN • Brasil",
   summary:
-    "Atuação orientada a troubleshooting avançado, operação crítica e construção de soluções que aproximam suporte, infraestrutura e desenvolvimento.",
+    "Atuação orientada a troubleshooting avançado, suporte N2, operação de provedores, automação e desenvolvimento de soluções que conectam infraestrutura, dados e software com clareza técnica.",
   highlights: [
     "Desenvolvimento full-stack",
-    "Linux Debian, Nginx e SSL/TLS",
+    "Linux, Nginx e SSL/TLS",
     "Docker, Node.js, TypeScript e Python",
     "PostgreSQL",
     "Cisco, Nokia, Huawei e Mikrotik",
@@ -109,9 +109,13 @@ const heroSection = new HeroSectionModel({
     "PPP, BGP e AAA/Radius",
   ],
   ctas: [
-    { label: "Ver projetos", href: "/portfolio/projetos", variant: "primary" },
-    { label: "Sobre mim", href: "/portfolio/sobre", variant: "secondary" },
-    { label: "Contato", href: "/portfolio/contato", variant: "secondary" },
+    { label: "Ver projetos", href: "/portfolio#projetos", variant: "primary" },
+    { label: "Sobre mim", href: "/portfolio#sobre", variant: "secondary" },
+    {
+      label: "Canais de contato",
+      href: "/portfolio#contato",
+      variant: "secondary",
+    },
   ],
 });
 
@@ -128,8 +132,10 @@ const aboutSection = new AboutSectionModel({
   focusAreas: [
     "Ambientes multivendor: Cisco, Nokia, Huawei e Mikrotik",
     "Troubleshooting avançado de PPP/BNG e AAA/Radius",
-    "Linux Debian, Nginx, SSL/TLS e análise de logs",
+    "Linux, Nginx, SSL/TLS e análise de logs",
     "Automação e integração de OLTs (ZTE, VSOL, Huawei)",
+    "Análise de dados com Python e SQL para suporte a operações e troubleshooting",
+    "Desenvolvimento full-stack com TypeScript, JavaScript e Node.js para soluções SaaS",
   ],
   stack: [
     "TypeScript",
@@ -142,6 +148,7 @@ const aboutSection = new AboutSectionModel({
     "Nginx",
     "Mikrotik",
   ],
+  photoUrl: "/images/profile/profile.jpeg",
 });
 
 const skillsSection = new SkillsSectionModel([
@@ -218,19 +225,28 @@ const skillsSection = new SkillsSectionModel([
 ]);
 
 const contactSection = new ContactSectionModel({
-  title: "Vamos conversar sobre tecnologia, projetos e oportunidades",
-  intro: "Estou sempre aberto a discutir novas ideias e colaborações.",
+  title: "Canais diretos para oportunidades, projetos e conversas técnicas",
+  intro:
+    "Os contatos abaixo concentram os canais mais diretos para falar sobre operação, desenvolvimento, infraestrutura e novas oportunidades.",
   availability:
-    "Atualmente aberto a oportunidades, projetos e empregos que valorizem a experiência técnica, a evolução contínua e a construção de soluções que aproximem suporte, infraestrutura e desenvolvimento.",
+    "Atualmente aberto a oportunidades, projetos e empregos na área de desenvolvimento, análise de dados ou DevOps.",
   channels: [
     {
       label: "Email",
       value: "andersoncontadev@gmail.com",
+      href: "mailto:andersoncontadev@gmail.com",
       note: "Meu email profissional para contato sobre oportunidades, projetos e parcerias técnicas.",
+    },
+    {
+      label: "GitHub",
+      value: "github.com/AndersonLems",
+      href: "https://github.com/AndersonLems",
+      note: "Repositórios e projetos técnicos públicos.",
     },
     {
       label: "LinkedIn",
       value: "www.linkedin.com/in/anderson-lemos-013076264",
+      href: "https://www.linkedin.com/in/anderson-lemos-013076264",
       note: "Meu perfil profissional no LinkedIn.",
     },
     {
@@ -242,9 +258,7 @@ const contactSection = new ContactSectionModel({
 
 export const siteNavigation: NavItem[] = [
   { label: "Início", href: "/portfolio" },
-  { label: "Sobre", href: "/portfolio/sobre" },
   { label: "Projetos", href: "/portfolio/projetos" },
-  { label: "Contato", href: "/portfolio/contato" },
 ];
 
 export const siteContent = {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import type { ProjectDetailViewModel } from "@/types/project";
 
@@ -15,7 +15,7 @@ export function ProjectDetailSection({ project }: ProjectDetailSectionProps) {
       <Container className="space-y-10">
         <Link
           href="/portfolio/projetos"
-          className="inline-flex text-sm text-cyan-300 transition hover:text-cyan-200"
+          className="inline-flex text-sm text-primary transition hover:text-primary/80"
         >
           ← Voltar para projetos
         </Link>
@@ -23,7 +23,9 @@ export function ProjectDetailSection({ project }: ProjectDetailSectionProps) {
         <div className="space-y-5">
           <div className="flex flex-wrap gap-2">
             <Badge variant="accent">{project.category}</Badge>
-            <Badge>{project.status}</Badge>
+            <Badge variant={project.status === "Em evolução" ? "success" : "default"}>
+              {project.status}
+            </Badge>
             {project.isTemplate ? <Badge variant="muted">Modelo inicial</Badge> : null}
           </div>
 
@@ -32,49 +34,61 @@ export function ProjectDetailSection({ project }: ProjectDetailSectionProps) {
 
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
-            <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold text-white">Visão geral</h3>
-              <p className="mt-4 text-base leading-8 text-slate-400">
+            <article className="rounded-[2rem] border border-border/70 bg-card/82 p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-primary">
+                Visão geral
+              </p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground">
                 {project.overview}
               </p>
             </article>
 
-            <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold text-white">Problema</h3>
-              <p className="mt-4 text-base leading-8 text-slate-400">
+            <article className="rounded-[2rem] border border-border/70 bg-card/82 p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-primary">
+                Problema
+              </p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground">
                 {project.problem}
               </p>
             </article>
 
-            <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold text-white">Solução</h3>
-              <p className="mt-4 text-base leading-8 text-slate-400">
+            <article className="rounded-[2rem] border border-border/70 bg-card/82 p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-primary">
+                Solução
+              </p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground">
                 {project.solution}
               </p>
             </article>
           </div>
 
           <div className="space-y-6">
-            <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold text-white">Resultados</h3>
-              <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
+            <article className="rounded-[2rem] border border-border/70 bg-card/82 p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                Resultados
+              </p>
+              <ul className="mt-4 space-y-3 text-sm leading-7 text-muted-foreground">
                 {project.results.map((result) => (
                   <li key={result}>{result}</li>
                 ))}
               </ul>
             </article>
 
-            <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold text-white">Destaques</h3>
-              <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
+            <article className="rounded-[2rem] border border-border/70 bg-card/82 p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                Destaques
+              </p>
+              <ul className="mt-4 space-y-3 text-sm leading-7 text-muted-foreground">
                 {project.highlights.map((highlight) => (
                   <li key={highlight}>{highlight}</li>
                 ))}
               </ul>
             </article>
 
-            <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold text-white">Stack</h3>
+            <article className="rounded-[2rem] border border-border/70 bg-card/82 p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                Stack
+              </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.stack.map((item) => (
                   <Badge key={item} variant="muted">
@@ -84,8 +98,10 @@ export function ProjectDetailSection({ project }: ProjectDetailSectionProps) {
               </div>
             </article>
 
-            <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold text-white">Links</h3>
+            <article className="rounded-[2rem] border border-border/70 bg-card/82 p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                Links
+              </p>
               {project.links.length > 0 ? (
                 <div className="mt-4 flex flex-wrap gap-3">
                   {project.links.map((link) => (
@@ -95,9 +111,9 @@ export function ProjectDetailSection({ project }: ProjectDetailSectionProps) {
                   ))}
                 </div>
               ) : (
-                <p className="mt-4 text-sm leading-7 text-slate-400">
-                  Este case ainda não possui links públicos. Quando houver conteúdo real
-                  disponível, os links serão substituídos.
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                  Este case ainda não possui links públicos. Quando houver conteúdo
+                  real disponível, os links serão substituídos.
                 </p>
               )}
             </article>

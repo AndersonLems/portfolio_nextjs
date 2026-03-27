@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
-import { Source_Sans_3, DM_Sans } from "next/font/google";
+import { Poppins, Roboto_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const dmSansHeading = DM_Sans({subsets:['latin'],variable:'--font-heading'});
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
 
-const sourceSans3 = Source_Sans_3({subsets:['latin'],variable:'--font-sans'});
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -34,7 +44,16 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={cn("scroll-smooth", "font-sans", sourceSans3.variable, dmSansHeading.variable)}>
+    <html
+      lang="pt-BR"
+      className={cn(
+        "dark",
+        "scroll-smooth",
+        "font-sans",
+        poppins.variable,
+        robotoMono.variable,
+      )}
+    >
       <body>{children}</body>
     </html>
   );

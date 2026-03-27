@@ -1,119 +1,139 @@
 "use client";
 
-import { useState } from "react";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import { Textarea } from "@/components/ui/Textarea";
-import { validateContactInput } from "@/lib/validators/contact";
-import type {
-  ContactFormErrors,
-  ContactFormInput,
-  ContactFormResponse,
-} from "@/types/contact";
+import { getContactChannelHref, getContactChannelIcon } from "@/lib/contact";
 import type { ContactContent, SectionViewModel } from "@/types/portfolio";
-
-const initialState: ContactFormInput = {
-  name: "",
-  email: "",
-  subject: "",
-  message: "",
-};
 
 type ContactSectionProps = {
   section: SectionViewModel<ContactContent>;
+  variant?: "home" | "page";
 };
 
-export function ContactSection({ section }: ContactSectionProps) {
-  const [form, setForm] = useState<ContactFormInput>(initialState);
-  const [errors, setErrors] = useState<ContactFormErrors>({});
-  const [response, setResponse] = useState<ContactFormResponse | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  function updateField<K extends keyof ContactFormInput>(
-    key: K,
-    value: string,
-  ) {
-    setForm((current) => ({ ...current, [key]: value }));
-    setErrors((current) => ({ ...current, [key]: undefined }));
-  }
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const validation = validateContactInput(form);
-
-    if (Object.keys(validation.errors).length > 0) {
-      setErrors(validation.errors);
-      setResponse({
-        success: false,
-        message: "Revise os campos do formulário antes de enviar.",
-      });
-      return;
-    }
-
-    setErrors({});
-    setIsSubmitting(true);
-
-    try {
-      const result = await fetch("/api/contato", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validation.data),
-      });
-      const payload = (await result.json()) as ContactFormResponse;
-
-      setResponse(payload);
-
-      if (payload.success) {
-        setForm(initialState);
-      } else {
-        setErrors(payload.errors ?? {});
-      }
-    } catch {
-      setResponse({
-        success: false,
-        message:
-          "Não foi possível enviar a mensagem agora. O endpoint ainda é um modelo inicial.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
+export function ContactSection({
+  section,
+  variant = "page",
+}: ContactSectionProps) {
   return (
-    <section className="py-20 sm:py-24">
-      <Container className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="space-y-6">
+    <section id="contato" className="scroll-mt-28 py-20 sm:py-24">
+      <Container className="space-y-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
           <SectionTitle
             eyebrow="Contato"
             title={section.content.title}
             description={section.content.intro}
           />
+        </motion.div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p className="text-sm leading-7 text-slate-400">
+        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
+            className="rounded-[2rem] border border-border/70 bg-card p-8 shadow-[0_24px_60px_-48px_rgba(0,0,0,0.82)]"
+          >
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
+              Disponibilidade
+            </p>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
               {section.content.availability}
             </p>
 
-            <ul className="mt-6 space-y-4">
-              {section.content.channels.map((channel) => (
-                <li
-                  key={channel.label}
-                  className="rounded-2xl bg-slate-950/70 p-4"
+            {variant === "home" ? (
+              <div className="mt-8 rounded-[1.5rem] border border-border/70 bg-muted/74 p-5">
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                  CTA final
+                </p>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                  Em vez de formulário, o fechamento da Home aponta diretamente para os
+                  canais reais de contato.
+                </p>
+              </div>
+            ) : null}
+          </motion.div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {section.content.channels.map((channel) => {
+              const href = getContactChannelHref(channel);
+              const Icon = getContactChannelIcon(channel.label);
+              const cardProps = href
+                ? {
+                    href,
+                    target: href.startsWith("mailto:") ? undefined : "_blank",
+                    rel: href.startsWith("mailto:")
+                      ? undefined
+                      : "noopener noreferrer",
+                  }
+                : {};
+
+              return (
+                <motion.div
+                  key={`${channel.label}-${channel.value}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
                 >
-                  <p className="text-sm font-semibold text-slate-100">
-                    {channel.label}
-                  </p>
-                  <p className="mt-1 text-sm text-slate-300">{channel.value}</p>
-                  {channel.note ? (
-                    <p className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">
-                      {channel.note}
-                    </p>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
+                  {href ? (
+                    <a
+                      {...cardProps}
+                      className="group block rounded-[1.75rem] border border-border/70 bg-card p-5 transition hover:-translate-y-0.5 hover:border-primary/28 hover:bg-card/96"
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border/70 bg-muted/74 text-foreground">
+                          <Icon className="h-5 w-5" />
+                        </span>
+                        <ArrowTopRightIcon className="h-4 w-4 text-muted-foreground transition group-hover:text-foreground" />
+                      </div>
+
+                      <div className="mt-6">
+                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                          {channel.label}
+                        </p>
+                        <p className="mt-3 text-sm font-semibold text-foreground">
+                          {channel.value}
+                        </p>
+                        {channel.note ? (
+                          <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                            {channel.note}
+                          </p>
+                        ) : null}
+                      </div>
+                    </a>
+                  ) : (
+                    <div className="rounded-[1.75rem] border border-border/70 bg-card p-5">
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border/70 bg-muted/74 text-foreground">
+                          <Icon className="h-5 w-5" />
+                        </span>
+                      </div>
+
+                      <div className="mt-6">
+                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                          {channel.label}
+                        </p>
+                        <p className="mt-3 text-sm font-semibold text-foreground">
+                          {channel.value}
+                        </p>
+                        {channel.note ? (
+                          <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                            {channel.note}
+                          </p>
+                        ) : null}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </Container>

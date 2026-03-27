@@ -1,58 +1,78 @@
-import { Container } from "@/components/layout/Container";
-import { Badge } from "@/components/ui/Badge";
-import { SectionTitle } from "@/components/ui/SectionTitle";
+import { GlassmorphismPortfolioBlock } from "@/components/ui/glassmorphism-portfolio-block-shadcnui";
+import { siteContent, siteConfig } from "@/data/site";
+import { getContactChannelHref } from "@/lib/contact";
 import type { AboutContent, SectionViewModel } from "@/types/portfolio";
 
 type AboutSectionProps = {
   section: SectionViewModel<AboutContent>;
 };
 
+function getLinkIcon(label: string) {
+  const normalized = label.toLowerCase();
+
+  if (normalized.includes("email")) {
+    return "mail" as const;
+  }
+
+  if (normalized.includes("github")) {
+    return "github" as const;
+  }
+
+  if (normalized.includes("linkedin")) {
+    return "linkedin" as const;
+  }
+
+  return "map" as const;
+}
+
 export function AboutSection({ section }: AboutSectionProps) {
-  const { content } = section;
+  const [primaryCta, secondaryCta] = siteContent.hero.content.ctas;
+  const links = siteContent.contact.content.channels.map((channel) => ({
+    ...channel,
+    href: getContactChannelHref(channel),
+    icon: getLinkIcon(channel.label),
+  }));
+
+  const previewHighlights = [
+    {
+      title: "Atuação atual",
+      description: section.content.currentRole,
+    },
+    {
+      title: "Formação",
+      description: section.content.education.join(" • "),
+    },
+    {
+      title: "Stack base",
+      description: section.content.stack.slice(0, 6).join(" • "),
+    },
+    {
+      title: "Tópicos-chave",
+      description: section.content.focusAreas.join(" • "),
+    },
+  ];
 
   return (
-    <section className="py-20 sm:py-24">
-      <Container className="space-y-12">
-        <SectionTitle eyebrow="Sobre" title={content.title} description={content.intro} />
-
-        <div className="grid gap-6 lg:grid-cols-3">
-          <article className="rounded-3xl border border-white/10 bg-white/5 p-6 lg:col-span-3">
-            <h3 className="text-lg font-semibold text-white">Atuação atual</h3>
-            <p className="mt-4 text-base leading-8 text-slate-400">
-              {content.currentRole}
-            </p>
-          </article>
-
-          <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 className="text-lg font-semibold text-white">Formação</h3>
-            <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
-              {content.education.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-
-          <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 className="text-lg font-semibold text-white">Áreas de foco</h3>
-            <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
-              {content.focusAreas.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-
-          <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 className="text-lg font-semibold text-white">Stack</h3>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {content.stack.map((item) => (
-                <Badge key={item} variant="muted">
-                  {item}
-                </Badge>
-              ))}
-            </div>
-          </article>
-        </div>
-      </Container>
-    </section>
+    <GlassmorphismPortfolioBlock
+      content={{
+        eyebrow: "Sobre",
+        title: section.content.title,
+        description: `${section.content.intro} ${section.content.currentRole}`,
+        highlights: previewHighlights,
+        links,
+        primaryCta: primaryCta
+          ? { label: primaryCta.label, href: primaryCta.href }
+          : { label: "Ver projetos", href: "/portfolio/projetos" },
+        secondaryCta: secondaryCta
+          ? { label: secondaryCta.label, href: secondaryCta.href }
+          : undefined,
+        profile: {
+          name: siteConfig.author,
+          role: siteContent.hero.content.role,
+          summary: section.content.focusAreas.join(" • "),
+          photoUrl: section.content.photoUrl,
+        },
+      }}
+    />
   );
 }

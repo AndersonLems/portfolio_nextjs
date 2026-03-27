@@ -26,6 +26,7 @@ export type AboutContent = {
   education: string[];
   focusAreas: string[];
   stack: string[];
+  photoUrl?: string;
 };
 
 export type SkillItem = {

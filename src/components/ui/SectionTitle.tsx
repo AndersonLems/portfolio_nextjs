@@ -3,6 +3,7 @@ type SectionTitleProps = {
   title: string;
   description?: string;
   align?: "left" | "center";
+  className?: string;
 };
 
 export function SectionTitle({
@@ -10,19 +11,27 @@ export function SectionTitle({
   title,
   description,
   align = "left",
+  className,
 }: SectionTitleProps) {
   return (
-    <div className={align === "center" ? "space-y-4 text-center" : "space-y-4"}>
+    <div
+      className={[
+        align === "center" ? "space-y-4 text-center" : "space-y-4",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       {eyebrow ? (
-        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">
+        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-primary">
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+      <h2 className="max-w-4xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-[2.8rem]">
         {title}
       </h2>
       {description ? (
-        <p className="max-w-3xl text-base leading-7 text-slate-400">
+        <p className="max-w-3xl text-base leading-8 text-muted-foreground">
           {description}
         </p>
       ) : null}

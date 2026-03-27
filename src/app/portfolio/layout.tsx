@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Footer } from "@/components/layout/Footer";
-import { Header } from "@/components/layout/Header";
-import { siteNavigation } from "@/data/site";
+import { Footer } from "@/components/ui/footer";
+import { Header3 } from "@/components/ui/header-3";
+import { siteConfig, siteContent, siteNavigation } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Portfólio",
@@ -14,10 +14,19 @@ export default function PortfolioLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <div className="min-h-screen bg-transparent text-slate-100">
-      <Header items={siteNavigation} />
+    <div className="min-h-screen bg-transparent text-foreground">
+      <Header3
+        items={siteNavigation}
+        brand={siteConfig.author}
+        subtitle="Infraestrutura, redes e desenvolvimento"
+      />
       {children}
-      <Footer />
+      <Footer
+        author={siteConfig.author}
+        description={siteConfig.description}
+        navigation={siteNavigation}
+        contactLinks={siteContent.contact.content.channels}
+      />
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
 
   return (
     <main>
-      <ProjectsSection section={section} />
+      <ProjectsSection section={section} variant="page" />
     </main>
   );
 }
