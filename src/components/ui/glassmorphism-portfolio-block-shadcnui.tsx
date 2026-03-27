@@ -49,28 +49,28 @@ export function GlassmorphismPortfolioBlock({
     .filter(Boolean);
 
   return (
-    <section id="sobre" className="py-20 lg:py-24">
+    <section id="sobre" className="py-16 sm:py-20 lg:py-24">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.45, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card p-8 shadow-[0_28px_70px_-56px_rgba(0,0,0,0.82)] md:p-12"
+          className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card p-6 shadow-none sm:p-8 sm:shadow-[0_28px_70px_-56px_rgba(0,0,0,0.82)] md:p-12"
         >
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.015),transparent_24%),radial-gradient(circle_at_top_left,rgba(207,142,165,0.08),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(106,143,130,0.05),transparent_42%)]" />
+          <div className="pointer-events-none absolute inset-0 opacity-40 sm:opacity-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.015),transparent_24%),radial-gradient(circle_at_top_left,rgba(207,142,165,0.08),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(106,143,130,0.05),transparent_42%)]" />
 
-          <div className="relative grid gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="relative grid gap-8 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr]">
             <div className="space-y-8">
-              <Badge variant="accent" className="px-4 py-1.5">
+              <Badge variant="accent" className="px-3 py-1.5 sm:px-4">
                 {content.eyebrow}
               </Badge>
 
               <div className="space-y-4">
-                <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+                <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl">
                   {content.title}
                 </h2>
-                <p className="max-w-2xl text-base leading-8 text-muted-foreground">
+                <p className="max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8">
                   {content.description}
                 </p>
               </div>
@@ -83,7 +83,7 @@ export function GlassmorphismPortfolioBlock({
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.28, delay: 0.06 * index }}
-                    className="rounded-[1.5rem] border border-border/70 bg-muted/72 p-5"
+                    className="rounded-[1.5rem] border border-border/70 bg-muted/72 p-4 sm:p-5"
                   >
                     <p className="font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground">
                       {item.title}
@@ -101,7 +101,11 @@ export function GlassmorphismPortfolioBlock({
                   <ArrowTopRightIcon className="h-4 w-4" />
                 </Button>
                 {content.secondaryCta ? (
-                  <Button href={content.secondaryCta.href} size="lg" variant="secondary">
+                  <Button
+                    href={content.secondaryCta.href}
+                    size="lg"
+                    variant="secondary"
+                  >
                     {content.secondaryCta.label}
                   </Button>
                 ) : null}
@@ -109,13 +113,13 @@ export function GlassmorphismPortfolioBlock({
             </div>
 
             <Card className="rounded-[28px] border-border/70 bg-muted/76">
-              <CardContent className="flex h-full flex-col gap-8 p-8">
+              <CardContent className="flex h-full flex-col gap-8 p-6 sm:p-8">
                 <div className="flex flex-col items-center text-center">
                   {content.profile.photoUrl ? (
                     <div className="relative">
-                      <div className="absolute inset-x-4 -bottom-4 h-10 rounded-full bg-primary/18 blur-2xl" />
-                      <div className="relative rounded-[2.4rem] border border-primary/24 bg-card/95 p-2 shadow-[0_34px_80px_-42px_rgba(0,0,0,0.92)]">
-                        <div className="relative h-64 w-48 overflow-hidden rounded-[1.9rem] border border-border/70 bg-card">
+                      <div className="absolute inset-x-4 -bottom-4 h-10 rounded-full bg-primary/18 blur-2xl sm:blur-2xl" />
+                      <div className="relative rounded-[2.2rem] border border-primary/24 bg-card/95 p-2 shadow-none sm:shadow-[0_34px_80px_-42px_rgba(0,0,0,0.92)]">
+                        <div className="relative h-52 w-40 overflow-hidden rounded-[1.7rem] border border-border/70 bg-card sm:h-64 sm:w-48">
                           <Image
                             src={content.profile.photoUrl}
                             alt={`Foto de ${content.profile.name}`}
@@ -146,7 +150,7 @@ export function GlassmorphismPortfolioBlock({
                   </div>
 
                   <div className="mt-5 w-full max-w-md rounded-[1.5rem] border border-border/70 bg-card/72 p-4 text-left">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground sm:text-[11px]">
                       Tópicos
                     </p>
                     <ul className="mt-3 space-y-2.5 text-sm leading-7 text-foreground/78">
@@ -179,7 +183,7 @@ export function GlassmorphismPortfolioBlock({
                                 : "noopener noreferrer",
                             }
                           : {})}
-                        className="group flex items-center justify-between rounded-2xl border border-border/70 bg-card px-4 py-3 transition hover:-translate-y-0.5 hover:border-primary/28 hover:bg-card/96"
+                        className="group flex items-center justify-between rounded-2xl border border-border/70 bg-card px-4 py-3 transition sm:hover:-translate-y-0.5 hover:border-primary/28 hover:bg-card/96"
                       >
                         <div className="flex items-center gap-3">
                           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-background/90 text-foreground/80">

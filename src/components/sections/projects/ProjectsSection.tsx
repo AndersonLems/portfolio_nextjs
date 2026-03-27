@@ -47,7 +47,7 @@ export function ProjectsSection({
   }));
 
   return (
-    <section id="projetos" className="py-20 sm:py-24">
+    <section id="projetos" className="py-16 sm:py-20 lg:py-24">
       <Container className="space-y-10">
         <SectionTitle
           eyebrow="Projetos"
@@ -73,7 +73,7 @@ export function ProjectsSection({
         />
 
         {variant === "home" ? (
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-[1.75rem] border border-border/70 bg-card px-6 py-5">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-[1.75rem] border border-border/70 bg-card px-5 py-4 sm:px-6 sm:py-5">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
                 Exploração completa
@@ -105,7 +105,7 @@ export function ProjectsSection({
                 title="Arquitetura, stack e contexto operacional dos principais cases"
                 description="Um panorama rápido dos projetos com foco em organização técnica, troubleshooting, integração e evolução incremental."
               />
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {projectFeatureItems.map((item) => (
                   <article
                     key={item.title}
@@ -125,7 +125,7 @@ export function ProjectsSection({
               </div>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
               {content.items.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}

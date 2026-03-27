@@ -37,16 +37,16 @@ export function Header3({ items, brand, subtitle }: Header3Props) {
           "border-border/80 bg-background/93 backdrop-blur supports-[backdrop-filter]:bg-background/88",
       )}
     >
-      <Container className="relative flex h-[4.6rem] items-center justify-between gap-4">
+      <Container className="relative flex h-[4.2rem] items-center justify-between gap-3 sm:h-[4.6rem]">
         <div className="flex min-w-0 items-center">
           <Link
             href="/portfolio"
-            className="flex h-11 flex-col justify-center rounded-[1.4rem] border border-border/70 bg-card px-4 transition hover:border-primary/30 hover:bg-card/96"
+            className="flex h-11 flex-col justify-center rounded-[1.2rem] border border-border/70 bg-card px-3 transition hover:border-primary/30 hover:bg-card/96 sm:px-4"
           >
-            <span className="block font-mono text-[10px] font-medium uppercase tracking-[0.34em] text-primary">
+            <span className="block font-mono text-[9px] font-medium uppercase tracking-[0.34em] text-primary sm:text-[10px]">
               {brand}
             </span>
-            <span className="mt-1 block text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+            <span className="mt-1 block max-w-[10rem] truncate text-[9px] uppercase tracking-[0.22em] text-muted-foreground sm:max-w-none sm:text-[10px] sm:tracking-[0.24em]">
               {subtitle}
             </span>
           </Link>
@@ -98,11 +98,13 @@ export function Header3({ items, brand, subtitle }: Header3Props) {
 
       <MobileMenu open={open}>
         <div className="space-y-6">
-          <div className="rounded-[1.5rem] border border-border/70 bg-card p-5">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary">
+          <div className="rounded-[1.5rem] border border-border/70 bg-card p-4 sm:p-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary sm:text-[11px]">
               {brand}
             </p>
-            <p className="mt-3 text-sm leading-7 text-muted-foreground">{subtitle}</p>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              {subtitle}
+            </p>
           </div>
 
           <nav aria-label="Navegação móvel">
@@ -120,7 +122,7 @@ export function Header3({ items, brand, subtitle }: Header3Props) {
                       href={item.href}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "block rounded-[1.25rem] border px-4 py-4 text-sm font-medium transition",
+                        "block min-h-12 rounded-[1.25rem] border px-4 py-3 text-sm font-medium transition",
                         isActive
                           ? "border-border/80 bg-background text-foreground"
                           : "border-border/60 bg-card text-foreground hover:border-primary/20 hover:bg-background/88",
@@ -136,7 +138,7 @@ export function Header3({ items, brand, subtitle }: Header3Props) {
         </div>
 
         <div className="rounded-[1.5rem] border border-border/70 bg-card p-4">
-          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground sm:text-[11px]">
             Navegação
           </p>
           <p className="mt-3 text-sm leading-7 text-muted-foreground">
@@ -161,9 +163,9 @@ function MobileMenu({ open, children }: MobileMenuProps) {
   return createPortal(
     <div
       id="mobile-menu"
-      className="fixed inset-x-0 bottom-0 top-[4.6rem] z-40 border-t border-border/70 bg-background/94 p-4 backdrop-blur-md md:hidden"
+      className="fixed inset-x-0 bottom-0 top-[4.2rem] z-40 border-t border-border/70 bg-background/96 p-4 md:top-[4.6rem] md:hidden md:backdrop-blur-md"
     >
-      <div className="flex h-full flex-col justify-between gap-6 overflow-y-auto rounded-[1.75rem] border border-border/70 bg-muted/70 p-4">
+      <div className="flex h-full flex-col justify-between gap-6 overflow-y-auto rounded-[1.5rem] border border-border/70 bg-muted/70 p-4 sm:rounded-[1.75rem]">
         {children}
       </div>
     </div>,

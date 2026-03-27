@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils/cn";
 import type { HeroContent } from "@/types/portfolio";
 
 type ModernAnimatedHeroSectionProps = {
@@ -186,8 +187,10 @@ export function AnimatedSignalPanel({
 
   useEffect(() => {
     const syncCharacters = () => {
-      const isCompact = window.innerWidth < 1024;
-      setCharacters(createCharacters(isCompact ? 24 : 42));
+      const width = window.innerWidth;
+      const isCompact = width < 1024;
+      const isSmall = width < 640;
+      setCharacters(createCharacters(isSmall ? 14 : isCompact ? 20 : 42));
     };
 
     syncCharacters();
@@ -229,10 +232,10 @@ export function AnimatedSignalPanel({
     <div
       className={
         className ??
-        "relative overflow-hidden rounded-[2rem] border border-border/70 bg-card p-6 shadow-[0_24px_64px_-52px_rgba(0,0,0,0.78)]"
+        "relative overflow-hidden rounded-[2rem] border border-border/70 bg-card p-5 shadow-none sm:p-6 sm:shadow-[0_24px_64px_-52px_rgba(0,0,0,0.78)]"
       }
     >
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.015),transparent_26%),radial-gradient(circle_at_top_left,rgba(207,142,165,0.10),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(106,143,130,0.08),transparent_42%)]" />
+      <div className="absolute inset-0 opacity-40 sm:opacity-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.015),transparent_26%),radial-gradient(circle_at_top_left,rgba(207,142,165,0.10),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(106,143,130,0.08),transparent_42%)]" />
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {characters.map((item, index) => {
@@ -246,8 +249,8 @@ export function AnimatedSignalPanel({
               style={{
                 left: `${item.x}%`,
                 top: `${item.y}%`,
-                opacity: isActive ? 0.72 : 0.16,
-                transform: `translate(-50%, -50%) scale(${isActive ? 1.08 : 0.92})`,
+                opacity: isActive ? 0.62 : 0.12,
+                transform: `translate(-50%, -50%) scale(${isActive ? 1.05 : 0.9})`,
                 color: isActive ? "var(--primary)" : "var(--muted-foreground)",
                 animation: `hero-float 6s ease-in-out ${item.delay}s infinite`,
               }}
@@ -258,29 +261,32 @@ export function AnimatedSignalPanel({
         })}
       </div>
 
-      <div className="relative grid gap-5">
+      <div className="relative grid gap-4 sm:gap-5">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary">
+            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-primary sm:text-[11px] sm:tracking-[0.32em]">
               Operação ativa
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 className="mt-2 text-lg font-semibold text-foreground sm:text-xl">
               Painel técnico
             </h2>
           </div>
           <Badge variant="muted">Live</Badge>
         </div>
 
-        <div className="grid gap-4 rounded-[1.5rem] border border-border/70 bg-muted/72 p-5">
+        <div className="grid gap-4 rounded-[1.5rem] border border-border/70 bg-muted/72 p-4 sm:p-5">
           <div className="grid gap-3 sm:grid-cols-2">
             <Metric label="Foco" value={content.role} />
             <Metric label="Base" value={content.location} />
           </div>
           <div className="grid gap-3 sm:grid-cols-3">
-            {content.highlights.slice(0, 3).map((item) => (
+            {content.highlights.slice(0, 3).map((item, index) => (
               <div
                 key={item}
-                className="rounded-2xl border border-border/70 bg-card p-4"
+                className={cn(
+                  "rounded-2xl border border-border/70 bg-card p-4",
+                  index > 1 && "hidden sm:block",
+                )}
               >
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
                   Highlight
@@ -298,7 +304,7 @@ export function AnimatedSignalPanel({
 function Metric({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-border/70 bg-card/70 p-4">
-      <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground sm:text-[11px] sm:tracking-[0.24em]">
         {label}
       </p>
       <p className="mt-2 text-sm leading-6 text-foreground">{value}</p>
@@ -312,25 +318,25 @@ export function ModernAnimatedHeroSection({
   const phrases = [content.role, ...content.highlights.slice(0, 2), content.location];
 
   return (
-    <section className="section-surface relative overflow-hidden border-b border-border/60 py-16 sm:py-20 lg:py-24">
+    <section className="section-surface relative overflow-hidden border-b border-border/60 py-12 sm:py-20 lg:py-24">
       <div className="absolute inset-0 bg-background" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.015),transparent_26%),radial-gradient(circle_at_top_left,rgba(207,142,165,0.08),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(106,143,130,0.05),transparent_38%)]" />
+      <div className="absolute inset-0 opacity-40 sm:opacity-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.015),transparent_26%),radial-gradient(circle_at_top_left,rgba(207,142,165,0.08),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(106,143,130,0.05),transparent_38%)]" />
 
-      <Container className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div className="space-y-7 lg:pr-10">
-          <Badge variant="accent" className="px-4 py-1.5">
+      <Container className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="space-y-6 lg:pr-10">
+          <Badge variant="accent" className="px-3 py-1.5 sm:px-4">
             {content.eyebrow}
           </Badge>
 
           <div className="space-y-4">
-            <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-[4.2rem] lg:leading-[1.02]">
+            <h1 className="max-w-4xl text-3xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-[4.2rem] lg:leading-[1.02]">
               {content.name}
             </h1>
             <ScrambledRole
               phrases={phrases}
-              className="min-h-[3.9rem] max-w-3xl font-mono text-lg text-foreground sm:text-xl lg:text-[1.32rem]"
+              className="min-h-[3.2rem] max-w-3xl font-mono text-base text-foreground sm:min-h-[3.9rem] sm:text-xl lg:text-[1.32rem]"
             />
-            <p className="max-w-3xl text-base leading-8 text-muted-foreground">
+            <p className="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8">
               {content.summary}
             </p>
           </div>
@@ -349,10 +355,13 @@ export function ModernAnimatedHeroSection({
           </div>
 
           <div className="flex flex-wrap gap-2 pt-1">
-            {content.highlights.slice(0, 5).map((item) => (
+            {content.highlights.slice(0, 5).map((item, index) => (
               <span
                 key={item}
-                className="inline-flex rounded-full border border-border/70 bg-card/78 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground"
+                className={cn(
+                  "inline-flex rounded-full border border-border/70 bg-card/78 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:text-[11px]",
+                  index > 1 && "hidden sm:inline-flex",
+                )}
               >
                 {item}
               </span>
@@ -362,7 +371,7 @@ export function ModernAnimatedHeroSection({
 
         <AnimatedSignalPanel
           content={content}
-          className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card/86 p-6 shadow-[0_28px_70px_-56px_rgba(0,0,0,0.78)]"
+          className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card/86 p-5 shadow-none sm:p-6 sm:shadow-[0_28px_70px_-56px_rgba(0,0,0,0.78)]"
         />
       </Container>
     </section>

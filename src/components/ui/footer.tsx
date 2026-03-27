@@ -67,7 +67,7 @@ export function Footer({
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border/70 bg-background/94 py-12 md:py-16">
+    <footer className="border-t border-border/70 bg-background/94 py-10 sm:py-12 md:py-16">
       <Container className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
         <div className="space-y-5">
           <div>
@@ -84,7 +84,7 @@ export function Footer({
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-full border border-border/70 bg-card px-4 py-2 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground transition hover:border-primary/28 hover:bg-background hover:text-foreground"
+                className="rounded-full border border-border/70 bg-card px-3 py-2 font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground transition hover:border-primary/28 hover:bg-background hover:text-foreground sm:px-4 sm:text-[11px]"
               >
                 {item.label}
               </Link>
@@ -108,7 +108,7 @@ export function Footer({
                   </span>
                   <div>
                     <p className="text-sm font-semibold text-foreground">{link.label}</p>
-                    <p className="text-xs text-muted-foreground">{link.value}</p>
+                    <p className="break-words text-xs text-muted-foreground">{link.value}</p>
                   </div>
                 </div>
               );
@@ -127,7 +127,7 @@ export function Footer({
                 </span>
                 <div>
                   <p className="text-sm font-semibold text-foreground">{link.label}</p>
-                  <p className="text-xs text-muted-foreground">{link.value}</p>
+                  <p className="break-words text-xs text-muted-foreground">{link.value}</p>
                 </div>
               </Link>
             );

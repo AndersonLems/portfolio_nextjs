@@ -17,7 +17,7 @@ export function ContactSection({
   variant = "page",
 }: ContactSectionProps) {
   return (
-    <section id="contato" className="scroll-mt-28 py-20 sm:py-24">
+    <section id="contato" className="scroll-mt-24 py-16 sm:py-20 lg:py-24">
       <Container className="space-y-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,17 +38,17 @@ export function ContactSection({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
-            className="rounded-[2rem] border border-border/70 bg-card p-8 shadow-[0_24px_60px_-48px_rgba(0,0,0,0.82)]"
+            className="rounded-[2rem] border border-border/70 bg-card p-6 shadow-none sm:p-8 sm:shadow-[0_24px_60px_-48px_rgba(0,0,0,0.82)]"
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
               Disponibilidade
             </p>
-            <p className="mt-4 text-base leading-8 text-muted-foreground">
+            <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8">
               {section.content.availability}
             </p>
 
             {variant === "home" ? (
-              <div className="mt-8 rounded-[1.5rem] border border-border/70 bg-muted/74 p-5">
+              <div className="mt-8 rounded-[1.5rem] border border-border/70 bg-muted/74 p-4 sm:p-5">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
                   CTA final
                 </p>
@@ -60,7 +60,7 @@ export function ContactSection({
             ) : null}
           </motion.div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
             {section.content.channels.map((channel) => {
               const href = getContactChannelHref(channel);
               const Icon = getContactChannelIcon(channel.label);
@@ -85,7 +85,7 @@ export function ContactSection({
                   {href ? (
                     <a
                       {...cardProps}
-                      className="group block rounded-[1.75rem] border border-border/70 bg-card p-5 transition hover:-translate-y-0.5 hover:border-primary/28 hover:bg-card/96"
+                      className="group block min-h-[10.5rem] rounded-[1.75rem] border border-border/70 bg-card p-5 transition sm:hover:-translate-y-0.5 hover:border-primary/28 hover:bg-card/96"
                     >
                       <div className="flex items-start justify-between gap-4">
                         <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border/70 bg-muted/74 text-foreground">
@@ -98,7 +98,7 @@ export function ContactSection({
                         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
                           {channel.label}
                         </p>
-                        <p className="mt-3 text-sm font-semibold text-foreground">
+                        <p className="mt-3 break-words text-sm font-semibold text-foreground">
                           {channel.value}
                         </p>
                         {channel.note ? (
@@ -109,7 +109,7 @@ export function ContactSection({
                       </div>
                     </a>
                   ) : (
-                    <div className="rounded-[1.75rem] border border-border/70 bg-card p-5">
+                    <div className="min-h-[10.5rem] rounded-[1.75rem] border border-border/70 bg-card p-5">
                       <div className="flex items-start justify-between gap-4">
                         <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border/70 bg-muted/74 text-foreground">
                           <Icon className="h-5 w-5" />
@@ -120,7 +120,7 @@ export function ContactSection({
                         <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
                           {channel.label}
                         </p>
-                        <p className="mt-3 text-sm font-semibold text-foreground">
+                        <p className="mt-3 break-words text-sm font-semibold text-foreground">
                           {channel.value}
                         </p>
                         {channel.note ? (
