@@ -5,7 +5,7 @@ import {
   GlobeIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
-import type { ComponentType, SVGProps } from "react";
+import type { ElementType } from "react";
 import { Container } from "@/components/layout/Container";
 import type { NavItem } from "@/types/portfolio";
 
@@ -22,7 +22,7 @@ type FooterProps = {
   contactLinks: FooterLink[];
 };
 
-type FooterIcon = ComponentType<SVGProps<SVGSVGElement>>;
+type FooterIcon = ElementType;
 
 function resolveHref(link: FooterLink) {
   if (link.href) {

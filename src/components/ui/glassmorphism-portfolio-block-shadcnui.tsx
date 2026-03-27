@@ -10,7 +10,7 @@ import {
 } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import type { ComponentType, SVGProps } from "react";
+import type { ElementType } from "react";
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import type { GlassPortfolioContent, GlassPortfolioLink } from "@/types/home";
 
 type SocialLink = Omit<GlassPortfolioLink, "icon"> & {
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  icon: ElementType;
 };
 
 type GlassmorphismPortfolioBlockProps = {
@@ -27,7 +27,7 @@ type GlassmorphismPortfolioBlockProps = {
 
 const iconMap: Record<
   GlassPortfolioLink["icon"],
-  ComponentType<SVGProps<SVGSVGElement>>
+  ElementType
 > = {
   mail: EnvelopeClosedIcon,
   github: GitHubLogoIcon,

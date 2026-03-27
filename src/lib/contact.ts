@@ -5,11 +5,11 @@ import {
   GlobeIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
-import type { ComponentType, SVGProps } from "react";
+import type { ElementType } from "react";
 import type { ContactContent } from "@/types/portfolio";
 
 type ContactChannel = ContactContent["channels"][number];
-type ContactIcon = ComponentType<SVGProps<SVGSVGElement>>;
+type ContactIcon = ElementType;
 
 export function getContactChannelHref(channel: ContactChannel) {
   if (channel.href) {

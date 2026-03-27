@@ -9,6 +9,9 @@ import type {
   SkillCategory,
 } from "@/types/portfolio";
 
+const siteBaseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
+
 abstract class BaseSection<TContent> {
   constructor(
     protected readonly id: string,
@@ -88,7 +91,7 @@ export const siteConfig = {
     "Anderson Lemos | Desenvolvedor Full-Stack e Analista de Suporte Técnico N2",
   description:
     "Portfólio técnico de Anderson Lemos com foco em redes, infraestrutura e desenvolvimento.",
-  baseUrl: "https://portfolio-modelo-inicial.local",
+  baseUrl: siteBaseUrl,
   locale: "pt_BR",
 };
 
