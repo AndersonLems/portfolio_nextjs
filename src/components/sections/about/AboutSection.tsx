@@ -57,7 +57,7 @@ export function AboutSection({ section }: AboutSectionProps) {
       content={{
         eyebrow: "Sobre",
         title: section.content.title,
-        description: `${section.content.intro} ${section.content.currentRole}`,
+        description: section.content.intro,
         highlights: previewHighlights,
         links,
         primaryCta: primaryCta
