@@ -24,7 +24,7 @@ export function Header({ items }: HeaderProps) {
             Anderson Lemos
           </Link>
           <p className="mt-1 text-xs text-slate-400">
-            Redes, infraestrutura, automação e desenvolvimento
+            Desenvolvedor Full-Stack e Analista de Suporte Técnico N3
           </p>
         </div>
 

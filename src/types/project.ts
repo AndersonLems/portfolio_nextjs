@@ -1,5 +1,4 @@
 export type ProjectCategory =
-  | "Automação"
   | "Redes"
   | "Observabilidade"
   | "Infraestrutura"

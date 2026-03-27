@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
+import { Source_Sans_3, DM_Sans } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const dmSansHeading = DM_Sans({subsets:['latin'],variable:'--font-heading'});
+
+const sourceSans3 = Source_Sans_3({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -28,7 +34,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR" className={cn("scroll-smooth", "font-sans", sourceSans3.variable, dmSansHeading.variable)}>
       <body>{children}</body>
     </html>
   );

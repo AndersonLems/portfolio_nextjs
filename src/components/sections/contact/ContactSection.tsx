@@ -31,7 +31,10 @@ export function ContactSection({ section }: ContactSectionProps) {
   const [response, setResponse] = useState<ContactFormResponse | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function updateField<K extends keyof ContactFormInput>(key: K, value: string) {
+  function updateField<K extends keyof ContactFormInput>(
+    key: K,
+    value: string,
+  ) {
     setForm((current) => ({ ...current, [key]: value }));
     setErrors((current) => ({ ...current, [key]: undefined }));
   }
@@ -95,7 +98,10 @@ export function ContactSection({ section }: ContactSectionProps) {
 
             <ul className="mt-6 space-y-4">
               {section.content.channels.map((channel) => (
-                <li key={channel.label} className="rounded-2xl bg-slate-950/70 p-4">
+                <li
+                  key={channel.label}
+                  className="rounded-2xl bg-slate-950/70 p-4"
+                >
                   <p className="text-sm font-semibold text-slate-100">
                     {channel.label}
                   </p>
@@ -110,68 +116,6 @@ export function ContactSection({ section }: ContactSectionProps) {
             </ul>
           </div>
         </div>
-
-        <form
-          onSubmit={handleSubmit}
-          className="rounded-[2rem] border border-white/10 bg-white/5 p-6 sm:p-8"
-        >
-          <div className="grid gap-5 sm:grid-cols-2">
-            <Input
-              label="Nome"
-              id="name"
-              value={form.name}
-              onChange={(event) => updateField("name", event.target.value)}
-              placeholder="Seu nome"
-              error={errors.name}
-            />
-            <Input
-              label="Email"
-              id="email"
-              type="email"
-              value={form.email}
-              onChange={(event) => updateField("email", event.target.value)}
-              placeholder="voce@exemplo.com"
-              error={errors.email}
-            />
-          </div>
-
-          <div className="mt-5">
-            <Input
-              label="Assunto"
-              id="subject"
-              value={form.subject}
-              onChange={(event) => updateField("subject", event.target.value)}
-              placeholder="Como posso ajudar?"
-              error={errors.subject}
-            />
-          </div>
-
-          <div className="mt-5">
-            <Textarea
-              label="Mensagem"
-              id="message"
-              value={form.message}
-              onChange={(event) => updateField("message", event.target.value)}
-              placeholder="Descreva seu contexto, objetivo ou oportunidade."
-              error={errors.message}
-            />
-          </div>
-
-          <div className="mt-6 flex flex-wrap items-center gap-4">
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Enviando..." : "Enviar mensagem"}
-            </Button>
-            {response ? (
-              <p
-                className={
-                  response.success ? "text-sm text-emerald-300" : "text-sm text-rose-300"
-                }
-              >
-                {response.message}
-              </p>
-            ) : null}
-          </div>
-        </form>
       </Container>
     </section>
   );

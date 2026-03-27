@@ -117,144 +117,163 @@ class ProjectRepository {
 
 const rawProjects = [
   {
-    slug: "automacao-olts-multivendor",
-    title: "Automação de OLTs multivendor",
+    slug: "radius-web",
+    title: "Sistema gerenciamento de usuários e sessões Radius",
     summary:
-      "Case técnico para padronizar rotinas operacionais em OLTs ZTE, VSOL e Huawei.",
+      "Case técnico para gerenciamento de sessões PPP e envio de atributos radius para equipamentos concentradores",
     overview:
-      "Este case técnico apresenta uma base para automação de tarefas repetitivas de operação em ambientes multivendor, reduzindo esforço manual e acelerando atendimentos técnicos.",
+      "Este projeto é um modelo inicial para um sistema de gerenciamento de usuários e sessões PPP, com foco em integração com equipamentos de borda e suporte a operações críticas.",
     problem:
-      "Operações recorrentes em OLTs de fabricantes distintos tendem a gerar variação de procedimento, tempo de resposta maior e dependência de conhecimento tácito.",
+      "Em ambientes de provedores de internet, a gestão de sessões PPP e a comunicação eficiente com concentradores são essenciais, mas muitas vezes dependem de processos manuais ou soluções fragmentadas.",
     solution:
-      "A proposta é consolidar comandos, fluxos e validações em uma camada de automação com foco em repetibilidade, clareza operacional e expansão futura.",
+      "A proposta é criar um sistema de gerenciamento simples e intuitivo para gerenciar conexões PPP, enviar atributos Radius para equipamentos Mikrotik, Huawei e Cisco.",
     results: [
-      "Padronização de rotinas críticas",
-      "Redução de atividades manuais em cenários repetitivos",
-      "Base pronta para evoluir para integração real com inventário e auditoria",
-    ],
-    category: "Automação",
-    status: "Case técnico",
-    stack: ["TypeScript", "Node.js", "Python", "Huawei", "ZTE", "VSOL"],
-    highlights: [
-      "Padronização operacional",
-      "Escalabilidade para ambiente multivendor",
-      "Organização do conhecimento técnico em fluxos reproduzíveis",
-    ],
-    featured: true,
-    isTemplate: false,
-    links: [],
-  },
-  {
-    slug: "painel-diagnostico-ppp-bng",
-    title: "Painel de diagnóstico PPP/BNG",
-    summary:
-      "Case técnico para análise rápida de autenticação, sessões PPP e incidentes de borda.",
-    overview:
-      "Pensado como interface operacional para consolidar sinais de diagnóstico em um único painel, reduzindo o tempo para triagem técnica.",
-    problem:
-      "Quando o diagnóstico depende de múltiplas fontes, o troubleshooting perde velocidade e o contexto do incidente fica fragmentado.",
-    solution:
-      "A solução organiza indicadores essenciais de autenticação, estado de sessão e contexto operacional em uma visualização clara para suporte N2.",
-    results: [
-      "Visão centralizada para troubleshooting",
-      "Menor dispersão entre ferramentas e consultas",
-      "Base viável para evoluir para observabilidade contínua",
+      "Plataforma funcional para gerenciamento de sessões PPP",
+      "Integração inicial com equipamentos concentradores.",
+      "Gerenciamento de usuários e sessões com mais controle e visibilidade",
     ],
     category: "Redes",
-    status: "Em evolução",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Docker", "Nginx"],
+    status: "Case técnico",
+    stack: [
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "PM2",
+      "Linux",
+      "FreeRadius",
+      "EVE-NG",
+    ],
     highlights: [
-      "Leitura operacional orientada a resposta rápida",
-      "Estrutura escalável para novas métricas",
-      "Aproximação entre dado técnico e tomada de decisão",
+      "Facilidade de gerenciamento de sessões PPP",
+      "Escalabilidade para ambiente multivendor",
+      "Organização de dados técnicos para suporte e operação",
     ],
     featured: true,
     isTemplate: false,
-    links: [],
+    links: [
+      { label: "GitHub", href: "https://github.com/AndersonLems/radius-web" },
+    ],
   },
   {
-    slug: "observabilidade-aaa-radius",
-    title: "Observabilidade de AAA/Radius",
-    summary:
-      "Case técnico para monitoramento de autenticação, análise de falhas e rastreabilidade de eventos Radius.",
+    slug: "gerenciar-contas",
+    title: "Sistema de controle financeiro",
+    summary: "Case técnico para gerenciamentos de despesas e de receitas.",
     overview:
-      "Projeto focado em dar mais visibilidade a eventos de autenticação, comportamento de serviço e pontos recorrentes de falha em fluxos AAA.",
+      "Pensado como interface analítica para consolidar dados financeiros em um único painel.",
     problem:
-      "Sem rastreabilidade organizada, correlações entre falhas de autenticação e eventos operacionais ficam lentas e sujeitas a perda de contexto.",
+      "A gestão financeira pessoal ou de pequenos negócios pode ser prejudicada pela dispersão de dados entre diferentes ferramentas, planilhas e registros manuais, o que dificulta a análise e o controle efetivo.",
     solution:
-      "A modelagem prioriza coleta estruturada, organização de eventos e apoio à leitura técnica para suporte e operação.",
+      "A proposta é criar uma plataforma unificada para gerenciamento financeiro, integrando dados de diferentes fontes e oferecendo uma visão consolidada.",
     results: [
-      "Maior clareza sobre eventos de autenticação",
-      "Base para alertas e métricas operacionais",
-      "Suporte à investigação técnica com histórico consolidado",
+      "Visão centralizada de finanças pessoais ou de pequenos negócios",
+      "Visão de entradas e saidas financeiras com mais clareza",
+      "Integração com sua folha de pagamento para controle de receitas",
     ],
-    category: "Observabilidade",
-    status: "Case técnico",
-    stack: ["Python", "PostgreSQL", "Debian", "Docker", "Radius"],
+    category: "Desenvolvimento",
+    status: "Em evolução",
+    stack: [
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "React",
+      "Docker",
+      "Linux",
+      "Git",
+    ],
     highlights: [
-      "Rastreabilidade de eventos",
-      "Foco em saúde de serviço",
-      "Preparação para alertas e painéis analíticos",
+      "Centralização de dados financeiros",
+      "Visão clara de receitas e despesas",
+      "Integração com sua folha de pagamento",
     ],
-    featured: false,
+    featured: true,
     isTemplate: false,
-    links: [],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/AndersonLems/gerenciarcontas",
+      },
+    ],
   },
   {
-    slug: "portal-operacional-sgp",
-    title: "Portal operacional para rotinas SGP",
+    slug: "E-Commerce-Backend",
+    title: "Modelo inicial para backend de e-commerce",
     summary:
-      "Modelo inicial para centralizar consultas, atalhos técnicos e fluxos operacionais do dia a dia.",
-    overview:
-      "Este item está marcado como modelo inicial e funciona como direção de produto para uma futura interface de apoio operacional.",
+      "Modelo inicial para backend de e-commerce, focado em organização de rotinas operacionais e integração com sistemas de pagamento.",
+    overview: "Integração com sistemas de pagamento e gestão de pedidos.",
     problem:
-      "Rotinas recorrentes acabam distribuídas entre documentação, comandos manuais e conhecimento individual, o que reduz previsibilidade.",
+      "A gestão de um e-commerce envolve múltiplas rotinas e sistemas, o que pode gerar complexidade e dificultar a manutenção.",
     solution:
-      "A proposta é organizar essas rotinas em módulos claros, com entradas e saídas previsíveis, preservando escalabilidade e manutenção simples.",
+      "A proposta é criar uma arquitetura modular que permita a integração de diferentes sistemas e rotinas de forma coesa.",
     results: [
-      "Modelo inicial para consolidação de fluxos",
-      "Estrutura concebida para crescer em módulos",
-      "Redução futura de dependência de conhecimento tácito",
+      "Base funcional para backend de e-commerce",
+      "Estrutura modular para integração de sistemas de pagamento e gestão de pedidos",
+      "Organização de rotinas operacionais para suporte a operações de e-commerce",
     ],
     category: "Desenvolvimento",
     status: "Modelo inicial",
-    stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
-    highlights: [
-      "Centralização operacional",
-      "Base para crescimento modular",
-      "Integração natural entre operação e desenvolvimento",
+    stack: [
+      "CommonJS",
+      "Node.js",
+      "PostgreSQL",
+      "Docker",
+      "Prisma",
+      "Linux",
+      "Git",
     ],
-    featured: false,
-    isTemplate: true,
-    links: [],
-  },
-  {
-    slug: "automacao-backup-e-recuperacao",
-    title: "Automação de backup e recuperação",
-    summary:
-      "Case técnico voltado à organização de rotinas de backup, conferência e recuperação com apoio operacional.",
-    overview:
-      "Projeto orientado à confiabilidade operacional, usando práticas de automação e verificação para dar mais previsibilidade a processos de backup.",
-    problem:
-      "Processos de backup e recuperação podem falhar silenciosamente quando não há uma camada consistente de conferência e acompanhamento.",
-    solution:
-      "A abordagem propõe fluxos simples de checagem, visibilidade de status e preparação para integração com ferramentas existentes.",
-    results: [
-      "Mais previsibilidade em rotinas críticas",
-      "Base para auditoria de execução",
-      "Suporte à continuidade operacional",
-    ],
-    category: "Infraestrutura",
-    status: "Case técnico",
-    stack: ["Python", "Docker", "Debian", "Acronis"],
     highlights: [
-      "Rotinas críticas com mais controle",
-      "Visibilidade de execução",
-      "Aderência a práticas de continuidade",
+      "Arquitetura modular para e-commerce",
+      "Integração inicial com sistemas de pagamento",
+      "Organização de rotinas operacionais para e-commerce",
     ],
     featured: false,
     isTemplate: false,
-    links: [],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/AndersonLems/commerce_store",
+      },
+    ],
+  },
+  {
+    slug: "E-commerce-frontend",
+    title: "Modelo inicial para frontend de e-commerce",
+    summary: "Case técnico para frontend de e-commerce.",
+    overview:
+      "Projeto orientado à criação de uma interface de usuário para e-commerce.",
+    problem:
+      "A falta de uma interface de usuário coesa pode dificultar a navegação e a interação do cliente com o e-commerce.",
+    solution:
+      "A abordagem propõe fluxos de navegação claros e consistentes, com ênfase na experiência do usuário.",
+    results: [
+      "Base funcional para frontend de e-commerce",
+      "Fluxos de navegação claros e consistentes",
+      "Foco na experiência do usuário para e-commerce",
+    ],
+    category: "Desenvolvimento",
+    status: "Modelo inicial",
+    stack: [
+      "TypeScript",
+      "React",
+      "Tailwind",
+      "ShadcnUI",
+      "Vite",
+      "Git",
+      "Docker",
+    ],
+    highlights: [
+      "Interface de usuário para e-commerce",
+      "Fluxos de navegação claros e consistentes",
+      "Foco na experiência do usuário para e-commerce",
+    ],
+    featured: false,
+    isTemplate: false,
+    links: [
+      {
+        label: "Github",
+        href: "https://github.com/AndersonLems/ecommerce-store-frontend",
+      },
+    ],
   },
 ] satisfies ReadonlyArray<Project>;
 
@@ -279,10 +298,16 @@ export function getProjectsSectionContent(
 ): SectionViewModel<ProjectsSectionContent> {
   const selectedCategory = repository
     .getCategories()
-    .find((item) => formatLabelValue(item) === formatLabelValue(filters.category ?? "all"));
+    .find(
+      (item) =>
+        formatLabelValue(item) === formatLabelValue(filters.category ?? "all"),
+    );
   const selectedStatus = repository
     .getStatuses()
-    .find((item) => formatLabelValue(item) === formatLabelValue(filters.status ?? "all"));
+    .find(
+      (item) =>
+        formatLabelValue(item) === formatLabelValue(filters.status ?? "all"),
+    );
 
   const items = repository.getFilteredProjects(filters);
 

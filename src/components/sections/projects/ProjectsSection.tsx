@@ -28,7 +28,6 @@ export function ProjectsSection({
 
         <div className="flex items-center justify-between gap-4 text-sm text-slate-400">
           <p>{formatProjectCount(content.total)}</p>
-          <p>Filtros persistidos por query string.</p>
         </div>
 
         {showFilters ? (

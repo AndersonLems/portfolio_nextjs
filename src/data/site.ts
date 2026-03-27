@@ -84,27 +84,29 @@ class ContactSectionModel extends BaseSection<ContactContent> {
 
 export const siteConfig = {
   author: "Anderson Lemos",
-  siteName: "Anderson Lemos | Portfólio",
+  siteName:
+    "Anderson Lemos | Desenvolvedor Full-Stack e Analista de Suporte Técnico N2",
   description:
-    "Portfólio técnico de Anderson Lemos com foco em redes, infraestrutura, automação e desenvolvimento.",
+    "Portfólio técnico de Anderson Lemos com foco em redes, infraestrutura e desenvolvimento.",
   baseUrl: "https://portfolio-modelo-inicial.local",
   locale: "pt_BR",
 };
 
 const heroSection = new HeroSectionModel({
-  eyebrow: "Analista de Suporte Técnico N2 • SGP",
+  eyebrow: "Desenvolvedor Full-Stack e Análista de Dados",
   name: "Anderson Lemos",
-  role:
-    "Infraestrutura, redes, automação e desenvolvimento com foco em eficiência operacional.",
+  role: "Infraestrutura, Redes, Análise de dados e Desenvolvimento.",
   location: "Natal/RN • Brasil",
   summary:
     "Atuação orientada a troubleshooting avançado, operação crítica e construção de soluções que aproximam suporte, infraestrutura e desenvolvimento.",
   highlights: [
-    "Cisco, Nokia, Huawei e Mikrotik",
-    "PPP, BGP e AAA/Radius",
+    "Desenvolvimento full-stack",
     "Linux Debian, Nginx e SSL/TLS",
     "Docker, Node.js, TypeScript e Python",
-    "PostgreSQL e automação de rede",
+    "PostgreSQL",
+    "Cisco, Nokia, Huawei e Mikrotik",
+    "Sólida experiência em redes e operação de provedores de internet",
+    "PPP, BGP e AAA/Radius",
   ],
   ctas: [
     { label: "Ver projetos", href: "/portfolio/projetos", variant: "primary" },
@@ -116,9 +118,9 @@ const heroSection = new HeroSectionModel({
 const aboutSection = new AboutSectionModel({
   title: "Trajetória técnica orientada à operação e evolução contínua",
   intro:
-    "Anderson Lemos é natural de Natal/RN, acadêmico em Ciências e Tecnologia pela UFRN e Técnico em Mecatrônica pelo IFRN – Campus Parnamirim. Sua trajetória conecta suporte técnico, redes, infraestrutura, automação e desenvolvimento com foco em eficiência operacional.",
+    "Sou Anderson Lemos, um profissional de tecnologia com uma trajetória focada em redes, infraestrutura e desenvolvimento, sempre orientado a resolver problemas complexos e construir soluções que aproximem suporte, operação e desenvolvimento.",
   currentRole:
-    "Atua como Analista de Suporte Técnico N2 com foco no SGP (Sistema de Gestão de Provedores), lidando com troubleshooting avançado em cenários multivendor e apoio a ambientes críticos de operação.",
+    "Atuo como Analista de Suporte Técnico N2 com foco em redes de provedores de internet e sistema de autenticação AAA, lidando com troubleshooting avançado em cenários multivendor e apoio a ambientes críticos de operação.",
   education: [
     "Ciências e Tecnologia — UFRN",
     "Técnico em Mecatrônica — IFRN Campus Parnamirim",
@@ -134,35 +136,34 @@ const aboutSection = new AboutSectionModel({
     "Node.js",
     "Python",
     "PostgreSQL",
-    "Docker",
-    "Docker Compose",
-    "Debian",
+    "Docker e Docker Compose",
+    "Git e GitHub",
+    "Linux",
     "Nginx",
     "Mikrotik",
-    "Acronis",
   ],
 });
 
 const skillsSection = new SkillsSectionModel([
   {
-    title: "Redes e operação",
+    title: "Redes de computadores",
     summary:
-      "Atuação em ambientes de produção com foco em estabilidade, diagnóstico e resposta rápida.",
+      "Suporte Técnico N2/N3 com foco em troubleshooting avançado de protocolos de redes e operação de provedores de internet.",
     items: [
       {
         name: "Troubleshooting PPP/BNG",
         description:
-          "Análise de sessões, autenticação e comportamento de borda em ambientes de operação.",
+          "Análise de sessões, autenticação e rastreabilidade de eventos para resolução de falhas e suporte a operação.",
       },
       {
         name: "AAA/Radius",
         description:
-          "Investigação de falhas, rastreabilidade de eventos e apoio a fluxos de autenticação.",
+          "Investigação de logs, configuração e suporte ao protocolo RADIUS para autenticação, autorização e contabilização em ambientes de provedores.",
       },
       {
         name: "Ambientes multivendor",
         description:
-          "Experiência prática com Cisco, Nokia, Huawei e Mikrotik em cenários heterogêneos.",
+          "Experiência prática com Cisco, Nokia, Huawei, Accel, Mikrotik e Juniper, lidando com particularidades e desafios de cada equipamento.",
       },
     ],
   },
@@ -189,45 +190,48 @@ const skillsSection = new SkillsSectionModel([
     ],
   },
   {
-    title: "Automação e desenvolvimento",
+    title: "Desenvolvimento e análise de dados",
     summary:
-      "Construção de ferramentas que reduzem esforço manual e melhoram a eficiência operacional.",
+      "Uso de linguagens de programação para automação, integração e suporte analítico, com foco em eficiência operacional.",
     items: [
       {
         name: "TypeScript e Node.js",
-        description:
-          "Automação, interfaces internas e camadas de integração orientadas a produtividade.",
+        description: "Desenvolvimento full-stack para SaaS",
       },
       {
         name: "Python",
         description:
-          "Scripts e fluxos técnicos para apoio a operação, integração e tratamento de dados.",
+          "Scripts e automação de tarefas técnicas, integração de APIs e suporte a análise de dados operacionais.",
       },
       {
         name: "PostgreSQL",
         description:
-          "Persistência e organização de dados técnicos para relatórios, painéis e suporte analítico.",
+          "Modelagem, consultas e manutenção de bancos de dados para suporte a operações e análise de dados técnicos.",
+      },
+      {
+        name: "Git e GitHub",
+        description:
+          "Controle de versão e colaboração em projetos de desenvolvimento e automação.",
       },
     ],
   },
 ]);
 
 const contactSection = new ContactSectionModel({
-  title: "Vamos conversar sobre operação, automação e evolução técnica",
-  intro:
-    "Este portfólio já está pronto para apresentar atuação técnica, cases e uma base inicial de contato. Dados públicos finais podem ser ajustados quando o conteúdo real estiver fechado.",
+  title: "Vamos conversar sobre tecnologia, projetos e oportunidades",
+  intro: "Estou sempre aberto a discutir novas ideias e colaborações.",
   availability:
-    "Disponibilidade de contato: modelo inicial, a preencher com canais definitivos antes do deploy público.",
+    "Atualmente aberto a oportunidades, projetos e empregos que valorizem a experiência técnica, a evolução contínua e a construção de soluções que aproximem suporte, infraestrutura e desenvolvimento.",
   channels: [
     {
       label: "Email",
-      value: "a preencher",
-      note: "modelo inicial",
+      value: "andersoncontadev@gmail.com",
+      note: "Meu email profissional para contato sobre oportunidades, projetos e parcerias técnicas.",
     },
     {
       label: "LinkedIn",
-      value: "a preencher",
-      note: "modelo inicial",
+      value: "www.linkedin.com/in/anderson-lemos-013076264",
+      note: "Meu perfil profissional no LinkedIn.",
     },
     {
       label: "Localização",
