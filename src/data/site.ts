@@ -10,7 +10,8 @@ import type {
 } from "@/types/portfolio";
 
 const siteBaseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
+  "http://localhost:3000";
 
 abstract class BaseSection<TContent> {
   constructor(
@@ -90,7 +91,7 @@ export const siteConfig = {
   siteName:
     "Anderson Lemos | Desenvolvedor Full-Stack e Analista de Suporte Técnico N2",
   description:
-    "Portfólio técnico de Anderson Lemos com foco em redes, infraestrutura e desenvolvimento.",
+    "Meu portfólio técnico com enfâse nas minhas competências profissionais e experiências de projetos pessoais.",
   baseUrl: siteBaseUrl,
   locale: "pt_BR",
 };
@@ -101,7 +102,7 @@ const heroSection = new HeroSectionModel({
   role: "Análise de dados e desenvolvimento full-stack",
   location: "Natal/RN • Brasil",
   summary:
-    "Atuação orientada a troubleshooting avançado, suporte N2, operação de provedores, automação e desenvolvimento de soluções que conectam infraestrutura, dados e software com clareza técnica.",
+    "Atuação orientada a troubleshooting avançado, suporte de nível 2 e nível 3, operação de provedores, automação e desenvolvimento de soluções que conectam infraestrutura, dados e software com clareza técnica.",
   highlights: [
     "Desenvolvimento full-stack",
     "Linux, Nginx e SSL/TLS",

@@ -12,14 +12,12 @@ export function SkillsSection({
   variant = "page",
 }: SkillsSectionProps) {
   const title =
-    variant === "home"
-      ? "Especialidades que sustentam operação, infraestrutura e software"
-      : "Competências organizadas por contexto técnico e execução real";
+    variant === "home" ? "Especialidades e competências profissionais" : "";
 
   const description =
     variant === "home"
-      ? "Uma leitura rápida das frentes técnicas que estruturam o portfólio."
-      : "As competências abaixo refletem o contexto já presente no projeto, organizadas para leitura técnica e posicionamento profissional.";
+      ? "Algumas das especialidades e competências profissionais."
+      : "";
 
   return (
     <section
@@ -50,9 +48,11 @@ export function SkillsSection({
                 {category.items.map((item) => (
                   <li
                     key={item.name}
-                  className="rounded-[1.5rem] border border-border/70 bg-muted/74 p-4"
-                >
-                    <p className="text-sm font-semibold text-foreground">{item.name}</p>
+                    className="rounded-[1.5rem] border border-border/70 bg-muted/74 p-4"
+                  >
+                    <p className="text-sm font-semibold text-foreground">
+                      {item.name}
+                    </p>
                     <p className="mt-2 text-sm leading-6 text-muted-foreground">
                       {item.description}
                     </p>
