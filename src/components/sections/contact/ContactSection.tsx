@@ -46,18 +46,7 @@ export function ContactSection({
             <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8">
               {section.content.availability}
             </p>
-
-            {variant === "home" ? (
-              <div className="mt-8 rounded-[1.5rem] border border-border/70 bg-muted/74 p-4 sm:p-5">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-                  CTA final
-                </p>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                  Em vez de formulário, o fechamento da Home aponta diretamente para os
-                  canais reais de contato.
-                </p>
-              </div>
-            ) : null}
+  
           </motion.div>
 
           <div className="grid gap-4 md:grid-cols-2">
