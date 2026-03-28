@@ -50,18 +50,21 @@ export function Header3({ items, brand, subtitle }: Header3Props) {
               {subtitle}
             </span>
           </Link>
-
         </div>
 
         <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden -translate-x-1/2 md:flex md:items-center">
-          <nav className="pointer-events-auto flex h-11 items-center" aria-label="Navegação principal">
+          <nav
+            className="pointer-events-auto flex h-11 items-center"
+            aria-label="Navegação principal"
+          >
             <ul className="flex h-11 items-center gap-1 rounded-full border border-border/70 bg-card/88 p-1">
               {items.map((item) => {
                 const baseHref = item.href.split("#")[0] ?? item.href;
                 const isActive =
                   baseHref === "/portfolio"
                     ? pathname === "/portfolio"
-                    : pathname === baseHref || pathname.startsWith(`${baseHref}/`);
+                    : pathname === baseHref ||
+                      pathname.startsWith(`${baseHref}/`);
 
                 return (
                   <li key={item.href}>
@@ -114,7 +117,8 @@ export function Header3({ items, brand, subtitle }: Header3Props) {
                 const isActive =
                   baseHref === "/portfolio"
                     ? pathname === "/portfolio"
-                    : pathname === baseHref || pathname.startsWith(`${baseHref}/`);
+                    : pathname === baseHref ||
+                      pathname.startsWith(`${baseHref}/`);
 
                 return (
                   <li key={item.href}>
@@ -142,7 +146,8 @@ export function Header3({ items, brand, subtitle }: Header3Props) {
             Navegação
           </p>
           <p className="mt-3 text-sm leading-7 text-muted-foreground">
-            A barra superior foi simplificada para priorizar branding e navegação.
+            Navegue pelo meu portfólio técnico para conhecer minhas
+            especialidades, projetos e trajetória profissional.
           </p>
         </div>
       </MobileMenu>
