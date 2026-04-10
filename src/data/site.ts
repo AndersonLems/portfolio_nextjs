@@ -107,6 +107,8 @@ const heroSection = new HeroSectionModel({
     "Desenvolvimento full-stack",
     "Linux, Nginx e SSL/TLS",
     "Docker, Node.js, TypeScript e Python",
+    "Java Spring Boot",
+    "Git e GitHub",
     "PostgreSQL",
     "Cisco, Nokia, Huawei e Mikrotik",
     "Sólida experiência em redes e operação de provedores de internet",
@@ -147,6 +149,9 @@ const aboutSection = new AboutSectionModel({
     "Python",
     "PostgreSQL",
     "Docker e Docker Compose",
+    "Java Spring Boot",
+    "Redis",
+    "React",
     "Git e GitHub",
     "Linux",
     "Nginx",
@@ -208,6 +213,21 @@ const skillsSection = new SkillsSectionModel([
       {
         name: "TypeScript e Node.js",
         description: "Desenvolvimento full-stack para SaaS",
+      },
+      {
+        name: "Java Spring Boot",
+        description:
+          "Desenvolvimento de aplicações backend com foco em arquitetura escalável e manutenção.",
+      },
+      {
+        name: "Redis",
+        description:
+          "Uso de Redis para caching e comunicação entre serviços.",
+      },
+      {
+        name: "React",
+        description:
+          "Desenvolvimento de interfaces de usuário modernas e responsivas.",
       },
       {
         name: "Python",

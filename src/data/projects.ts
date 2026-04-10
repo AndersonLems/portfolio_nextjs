@@ -275,6 +275,130 @@ const rawProjects = [
       },
     ],
   },
+    {
+    slug: "stream-app",
+    title: "Aplicativo de streaming e IPTV",
+    summary: "Modelo inicial de app para leitura de playlists M3U e reprodução de canais.",
+    overview:
+      "Projeto orientado ao desenvolvimento de uma interface para streaming e IPTV, com foco em organização de playlists, navegação entre categorias e experiência de reprodução.",
+    problem:
+      "Muitos aplicativos de IPTV apresentam navegação confusa, baixa padronização visual e dificuldade para localizar canais e conteúdos com rapidez.",
+    solution:
+      "A proposta organiza o fluxo de uso em etapas simples (lista, seleção e reprodução), com interface consistente e componentes reutilizáveis para melhorar a experiência do usuário.",
+    results: [
+      "Base funcional para frontend de streaming e IPTV",
+      "Leitura e organização inicial de playlists M3U",
+      "Fluxos de navegação mais claros para seleção e reprodução de conteúdo",
+    ],
+    category: "Desenvolvimento",
+    status: "Modelo inicial",
+    stack: [
+      "TypeScript",
+      "React",
+      "Tailwind",
+      "ShadcnUI",
+      "Vite",
+      "Git",
+      "Java Spring Boot",
+    ],
+    highlights: [
+      "Interface de usuário voltada para streaming e IPTV",
+      "Estrutura inicial para leitura de playlists M3U",
+      "Navegação simplificada para descoberta de canais e conteúdos",
+    ],
+    featured: false,
+    isTemplate: false,
+    links: [
+      {
+        label: "Github",
+        href: "https://github.com/AndersonLems/springboot_iptv",
+      },
+    ],
+  },
+  {
+    slug: "analise-leishmaniose-pysus",
+    title: "Análise de leishmaniose visceral com PySUS",
+    summary:
+      "Case técnico de análise exploratória com dados públicos do SINAN usando Python e notebook.",
+    overview:
+      "Projeto de análise de dados focado em notificações de leishmaniose visceral no Brasil, com enriquecimento geográfico, tratamento de datas e geração de visualizações comparativas.",
+    problem:
+      "Dados epidemiológicos públicos costumam vir em formato bruto, com códigos e estrutura que dificultam leitura rápida para análise inicial.",
+    solution:
+      "A abordagem consolida coleta via PySUS, normalização de campos e recortes analíticos em notebook para transformar dados técnicos em insights mais legíveis.",
+    results: [
+      "Coleta de registros e metadados do agravo LEIV via PySUS",
+      "Recortes analíticos para casos confirmados, óbitos e registros inconclusivos",
+      "Geração de gráficos e painéis em PNG para apoio à leitura epidemiológica",
+    ],
+    category: "Desenvolvimento",
+    status: "Case técnico",
+    stack: [
+      "Python",
+      "Jupyter Notebook",
+      "PySUS",
+      "Pandas",
+      "NumPy",
+      "Seaborn",
+      "Matplotlib",
+      "Requests",
+      "Git",
+    ],
+    highlights: [
+      "Integração com dados públicos de saúde via PySUS",
+      "Tratamento de dados para análise exploratória em notebook",
+      "Visualizações para comparação temporal e geográfica de notificações",
+    ],
+    featured: false,
+    isTemplate: false,
+    links: [
+      {
+        label: "Github",
+        href: "https://github.com/AndersonLems/data_pysus_python",
+      },
+    ],
+  },
+  {
+    slug: "analise-preco-combustivel-global",
+    title: "Análise global de preços de combustíveis",
+    summary:
+      "Modelo inicial de análise de dados para evolução do preço da gasolina com exploração estatística e ML.",
+    overview:
+      "Projeto de análise de dados com séries históricas globais de combustíveis, incluindo comparação entre países, leitura do cenário brasileiro e aplicação de modelos para tendência de preços.",
+    problem:
+      "Sem uma análise estruturada, fica difícil comparar países, entender volatilidade e identificar tendências do preço da gasolina no Brasil ao longo do tempo.",
+    solution:
+      "A solução organiza o fluxo em limpeza e transformação da base, análise exploratória, conversão para moeda local, regressão para tendência e clusterização de países por comportamento de preços.",
+    results: [
+      "Ranking e comparação histórica de preços de gasolina entre países",
+      "Estimativa de tendência de preço da gasolina no Brasil com regressão",
+      "Agrupamento de países por perfil de preço e volatilidade com KMeans",
+    ],
+    category: "Desenvolvimento",
+    status: "Modelo inicial",
+    stack: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Scikit-learn",
+      "Google Colab",
+      "Git",
+    ],
+    highlights: [
+      "Análise global com foco comparativo entre países",
+      "Série histórica do Brasil convertida para Real (R$)",
+      "Pipeline com EDA, previsão e clusterização em um único estudo",
+    ],
+    featured: false,
+    isTemplate: true,
+    links: [
+      {
+        label: "Github",
+        href: "https://github.com/AndersonLems/data_fuel_python",
+      },
+    ],
+  },
 ] satisfies ReadonlyArray<Project>;
 
 const repository = new ProjectRepository(
